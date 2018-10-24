@@ -1,7 +1,11 @@
+<?php
+    session_start(); 
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MyMarket-SignIn</title>
+	<title>My Cart</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -69,15 +73,35 @@
 	<header>
 		<div class="container">
             <div id="imagelogo">
-			     <a href="home.html"><img src="img/mymarket1.png" alt="MyMarket"></a>
+			    <?php 
+                    if(isset($_SESSION['id'])) {
+                        echo'<a href="home.php"><img src="img/mymarket1.png" alt="MyMarket"></a>'; 
+                    }
+                    if(!isset($_SESSION['id'])) {
+                        echo'<a href="home.php"><img src="img/mymarket1.png" alt="MyMarket"></a>'; 
+                    }
+                ?>
             </div>
 			<div id="main-menu">
 				<ul>
-                    <li><a href="home.html">Home</a></li>
-					<li><a href="myaccount.html">My Account</a></li>
-					<li><a href="mycart.html">My Cart</a></li>
-					<li><a href="signup.html">Sign up</a></li>
-					<li><a class="actual" href="signin.html">Sign in</a></li>
+                    <!--<li><a href="home.php">Home</a></li>
+					<li><a href="myaccount.php">My Account</a></li>
+					<li><a class="actual" href="mycart.php">My Cart</a></li>
+					<li><a href="signup.php">Sign up</a></li>
+					<li><a href="signin.php">Sign in</a></li>-->
+                    <?php 
+                        if(isset($_SESSION['id'])) {
+                        echo'<li><a href="home.php">Home</a></li>
+                            <li><a href="myaccount.php">My Account</a></li>
+                            <li><a class="actual" href="mycart.php">My Cart</a></li>
+                            <li><a href="signin.php">Sign out</a></li>';
+                        }
+                        if(!isset($_SESSION['id'])) {
+                        echo'<li><a href="home.php">Home</a></li>
+                            <li><a href="signup.php">Sign up</a></li>
+                            <li><a href="signin.php">Sign in</a></li>';
+                        }
+                    ?>
 				</ul>
 				<form>
 					<input type="text" name="Search" placeholder="Search here...">
@@ -171,15 +195,51 @@
 		</nav>
 
 		<div class="container">
-			<div id="signin">
-                <h1>Sign In</h1>
-                <p>Sign in to your account!</p>
-                <form>
-                    <input type="email" name="email" placeholder="Email">
-                    <input type="password" name="password" placeholder="Password">
-                    <input type="submit" value="Sign In">
-                </form>
-                <p id="forgotpassword"><a href="#">Forgot password?</a></p>
+			<div id="shoppingcart">
+                <h1>Your shopping cart</h1>
+                <table>
+                    <tr>
+                        <th>Serial</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Amount</th>
+                        <th>Options</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Lorem Ipsum Dolor</td>
+                        <td>$100</td>
+                        <td>2</td>
+                        <td>$200</td>
+                        <td><a href="#">Cancel</a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Lorem Ipsum Dolor</td>
+                        <td>$300</td>
+                        <td>1</td>
+                        <td>$300</td>
+                        <td><a href="#">Cancel</a></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Lorem Ipsum Dolor</td>
+                        <td>$90</td>
+                        <td>2</td>
+                        <td>$180</td>
+                        <td><a href="#">Cancel</a></td>
+                    </tr>
+                    <tr id="ordertotal">
+                        <td colspan="6">
+                            <p>Order Total: $680</p>
+                            <button><a href="#">Clear Cart</a></button>
+                            <button><a href="#">Update Cart</a></button>
+                            <button><a href="#">Place Order</a></button>
+                        </td>
+                    </tr>
+                </table>
+                <button id="ContinueShopping"><a href="#">Continue shopping</a></button>
             </div>
         </div>		
 	</section>

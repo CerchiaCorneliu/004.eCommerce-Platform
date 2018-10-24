@@ -1,3 +1,10 @@
+<?php
+    session_start(); 
+    if (isset($_SESSION['id'])) {
+        header("Location:home.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,15 +76,35 @@
 	<header>
 		<div class="container">
             <div id="imagelogo">
-			     <a href="home.html"><img src="img/mymarket1.png" alt="MyMarket"></a>
+			    <?php 
+                    if(isset($_SESSION['id'])) {
+                        echo'<a href="home.php"><img src="img/mymarket1.png" alt="MyMarket"></a>'; 
+                    }
+                    if(!isset($_SESSION['id'])) {
+                        echo'<a href="home.php"><img src="img/mymarket1.png" alt="MyMarket"></a>'; 
+                    }
+                ?>
             </div>
 			<div id="main-menu">
 				<ul>
-                    <li><a href="home.html">Home</a></li>
-					<li><a href="myaccount.html">My Account</a></li>
-					<li><a href="mycart.html">My Cart</a></li>
-					<li><a class="actual"href="signup.html">Sign up</a></li>
-					<li><a href="signin.html">Sign in</a></li>
+                    <!--<li><a href="home.php">Home</a></li>
+					<li><a href="myaccount.php">My Account</a></li>
+					<li><a href="mycart.php">My Cart</a></li>
+					<li><a class="actual"href="signup.php">Sign up</a></li>
+					<li><a href="signin.php">Sign in</a></li>-->
+                    <?php 
+                        if(isset($_SESSION['id'])) {
+                        echo'<li><a href="home.php">Home</a></li>
+                            <li><a href="myaccount.php">My Account</a></li>
+                            <li><a href="mycart.php">My Cart</a></li>
+                            <li><a class="actual" href="signin.php">Sign out</a></li>';
+                        }
+                        if(!isset($_SESSION['id'])) {
+                        echo'<li><a href="home.php">Home</a></li>
+                            <li><a class="actual" href="signup.php">Sign up</a></li>
+                            <li><a href="signin.php">Sign in</a></li>';
+                        }
+                    ?>
 				</ul>
 				<form>
 					<input type="text" name="Search" placeholder="Search here...">
@@ -174,15 +201,24 @@
 			<div id="signup">
                 <h1>Sign Up</h1>
                 <p>Please fill in this form to create an account!</p>
-                <form>
-                    <input type="text" name="firstname" placeholder="First Name">
-                    <input type="text" name="lastname" placeholder="Last Name">
-                    <input type="email" name="email" placeholder="Email">
-                    <input type="password" name="password" placeholder="Password">
-                    <input type="password" name="confirmpassword" placeholder="Confirm Password">
+                <form method="POST" action="includes/signup.inc.php">
+                    <input type="text" name="firstname" placeholder="First Name *">
+                    <input type="text" name="lastname" placeholder="Last Name *">
+                    <input type="text" name="username" placeholder="Username *">
+                    <input type="email" name="email" placeholder="E-mail *">
+                    <input type="password" name="password" placeholder="Password *">
                     <input type="submit" name="signup" value="Sign Up">
                 </form>
-                <p id="loginhere">Already have an account? <a href="signin.html">Login here.</a></p>
+                <?php 
+                    if(isset($_GET['info']) && $_GET['info'] == 'ok') {
+                        echo '<p style = "text-align: center; color: green; font-size: 20px;">Your account has been created succesfully!</p>';
+                    } else if (isset($_GET['info']) && $_GET['info'] == 'error') {
+                        echo '<p style = "text-align: center; color: red; font-size: 20px;">Invalid register! Please fill in this form!</p>';
+                    } else if (isset($_GET['info']) && $_GET['info'] == 'exist') {
+                        echo '<p style = "text-align: center; color: red; font-size: 20px;">Invalid register! Email already taken!</p>';
+                    }
+                ?>
+                <p id="loginhere">Already have an account? <a href="signin.php">Login here.</a></p>
             </div>
         </div>		
 	</section>

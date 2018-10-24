@@ -1,3 +1,7 @@
+<?php
+    session_start(); 
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,18 +85,38 @@
 	<header>
 		<div class="container">
             <div id="imagelogo">
-			     <a href="home.html"><img src="img/mymarket1.png" alt="MyMarket"></a>
+                <?php 
+                    if(isset($_SESSION['id'])) {
+                        echo'<a href="home.php"><img src="img/mymarket1.png" alt="MyMarket"></a>'; 
+                    }
+                    if(!isset($_SESSION['id'])) {
+                        echo'<a href="home.php"><img src="img/mymarket1.png" alt="MyMarket"></a>'; 
+                    }
+                ?>
             </div>
 			<div id="main-menu">
 				<ul>
-                    <li><a class="actual" href="home.html">Home</a></li>
-					<li><a href="myaccount.html">My Account</a></li>
-					<li><a href="mycart.html">My Cart</a></li>
-					<li><a href="signup.html">Sign up</a></li>
-					<li><a href="signin.html">Sign in</a></li>
+                    <!--<li><a class="actual" href="home.php">Home</a></li>
+					<li><a href="myaccount.php">My Account</a></li>
+					<li><a href="mycart.php">My Cart</a></li>
+					<li><a href="signup.php">Sign up</a></li>
+					<li><a href="signin.php">Sign in</a></li>-->
+                    <?php 
+                        if(isset($_SESSION['id'])) {
+                        echo'<li><a class="actual" href="home.php">Home</a></li>
+                            <li><a href="myaccount.php">My Account</a></li>
+                            <li><a href="mycart.php">My Cart</a></li>
+                            <li><a href="signin.php">Sign out</a></li>';
+                        }
+                        if(!isset($_SESSION['id'])) {
+                        echo'<li><a class="actual" href="home.php">Home</a></li>
+                            <li><a href="signup.php">Sign up</a></li>
+                            <li><a href="signin.php">Sign in</a></li>';
+                        }
+                    ?>
 				</ul>
 				<form>
-					<input type="text" name="Search" placeholder="Search here...">
+					<input type="text" name="search" placeholder="Search here...">
 					<button type="submit"><i class="fa fa-search"></i></button>
 				</form>
 			</div>
@@ -229,8 +253,8 @@
 			</aside>
 
 			<article>
-				<div id="advertise">
-					<div id=advert>
+				<div id="advertize">
+					<div id="advert">
 						<img src="img/galaxy s9.jpg">
 						<h1>best deal 2018</h1>
 						<h2>save 30% for</h2>

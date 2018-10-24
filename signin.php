@@ -1,7 +1,11 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My Account</title>
+	<title>MyMarket-SignIn</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -69,15 +73,30 @@
 	<header>
 		<div class="container">
             <div id="imagelogo">
-			     <a href="home.html"><img src="img/mymarket1.png" alt="MyMarket"></a>
+			    <?php 
+                    if(isset($_SESSION['id'])) {
+                        echo'<a href="home.php"><img src="img/mymarket1.png" alt="MyMarket"></a>'; 
+                    }
+                    if(!isset($_SESSION['id'])) {
+                        echo'<a href="home.php"><img src="img/mymarket1.png" alt="MyMarket"></a>'; 
+                    }
+                ?>
             </div>
 			<div id="main-menu">
 				<ul>
-                    <li><a href="home.html">Home</a></li>
-					<li><a class="actual" href="myaccount.html">My Account</a></li>
-					<li><a href="mycart.html">My Cart</a></li>
-					<li><a href="signup.html">Sign up</a></li>
-					<li><a href="signin.html">Sign in</a></li>
+                    <?php 
+                        if(isset($_SESSION['id'])) {
+                        echo'<li><a href="home.php">Home</a></li>
+                            <li><a href="myaccount.php">My Account</a></li>
+                            <li><a href="mycart.php">My Cart</a></li>
+                            <li><a class="actual" href="signin.php">Sign out</a></li>';
+                        }
+                        if(!isset($_SESSION['id'])) {
+                        echo'<li><a href="home.php">Home</a></li>
+                            <li><a href="signup.php">Sign up</a></li>
+                            <li><a class="actual" href="signin.php">Sign in</a></li>';
+                        }
+                    ?>
 				</ul>
 				<form>
 					<input type="text" name="Search" placeholder="Search here...">
@@ -171,51 +190,33 @@
 		</nav>
 
 		<div class="container">
-			<aside>
-                <div id="account">
-                    <h1>ACCOUNT</h1>
-                    <ul>
-                        <li><a href="#">Login/Register</a></li>
-                        <li><a href="#">Forgotten Password</a></li>
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Wish List</a></li>
-                        <li><a href="#">Order History</a></li>
-                        <li><a href="#">Downloads</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Transactions</a></li>
-                        <li><a href="#">Newsletter</a></li>
-                    </ul>
-                </div>
-			</aside>
-
-			<article>
-				<div id="myaccount">
-					<h1>MY ACCOUNT</h1>
-                    <ul>
-                        <li><a href="#">Edit your account information</a></li>
-                        <li><a href="#">Change your password</a></li>
-                        <li><a href="#">Modify your address book entries</a></li>
-                        <li><a href="#">Modify your wishlist</a></li>
-                    </ul>
-				</div>
-
-				<div id="myorder">
-					<h1>MY ORDER</h1>
-					<ul>
-                        <li><a href="#">Edit your account information</a></li>
-                        <li><a href="#">Change your password</a></li>
-                        <li><a href="#">Modify your address book entries</a></li>
-                        <li><a href="#">Modify your wishlist</a></li>
-                    </ul>
-				</div>
-
-				<div id="newsletter">
-					<h1>NEWSLETTER</h1>
-					<ul>
-                        <li><a href="#">Subscribe / unsubcribe to newsletter</a></li>
-                    </ul>
-				</div>
-            </article>
+			<div id="signin">
+                <h1>Sign In</h1>
+                <p>Sign in to your account!</p>
+                <?php
+                    if(!isset($_SESSION['id'])) {
+                        echo'
+                        <form method="POST" action="includes/signin.inc.php">
+                            <input type="email" name="email" placeholder="Email">
+                            <input type="password" name="password" placeholder="Password">
+                            <input type="submit" value="Sign In">
+                        </form>';
+                    } else {
+                        echo '<p style="text-align: center; font-size: 35px;">Welcome, '.$_SESSION['lastname'].'!';
+                        echo '
+                            <form action="includes/signout.inc.php">
+                                <input type="submit" value="Sign Out">
+                            </form>';
+                    }
+                ?>
+                <?php 
+                    if(isset($_GET['info']) && $_GET['info'] == 'incorrect') {
+                        echo '<p style = "text-align: center; color: red; font-size: 20px;">Invalid email or password!</p>';
+                    }
+                ?>
+                
+                <p id="forgotpassword"><a href="#">Forgot password?</a></p>
+            </div>
         </div>		
 	</section>
 

@@ -5,6 +5,7 @@
         background-color: #f2f2f2;
         margin: 0px auto;
         font-family: 'Lato', Helvetica, sans-serif;
+        max-height: 2160px;
     }
 
     .container {
@@ -68,7 +69,7 @@
 
     #main-menu li {
       display: inline;
-      padding-left: 41px;
+      padding-left: 44px;
     }
 
     #main-menu a {
@@ -89,15 +90,14 @@
 
     #main-menu form {
       float: right;
-      width: 500px;
+      width: 420px;
       margin: none;
-      display: inline;
     }
 
     #main-menu form input {
       padding: 5px;
       height: 20px;
-      width: 448px;
+      width: 368px;
       border: 1px solid #ff9900;
       border-radius: 5px 0px 0px 5px;
       background-color: #f2f2f2;
@@ -113,7 +113,6 @@
       color: white;
       overflow: hidden;
       border-radius: 0px 5px 5px 0px;
-      margin: none;
       transition: background-color .5s;
       cursor: pointer;
     }
@@ -135,7 +134,6 @@
     /* SECTION NAV */
 
     nav {
-        overflow: hidden;
         background-color: #ff9900;
         color: #ffffff;
         min-height: 40px;
@@ -377,14 +375,13 @@
     
     #myaccount {
       background-color: white;
-      margin: 20px 0px 30px 0px;
+      margin: 30px 0px;
       padding: 10px 20px 20px 30px;
       border-radius: 5px;
       box-shadow: 0px 2px 1px #d9d9d9;
-      min-height: 100px;
     }
     
-    #myaccount ul{
+    #myaccount ul {
         padding-left: 0px;
         list-style: none;
     }
@@ -570,11 +567,11 @@
         color: white;
     }
     
-    #signup #loginhere{
+    #signup #loginhere {
         border: none;
     }
     
-    #signup #loginhere a{
+    #signup #loginhere a {
         color: #919191;
     }
     
@@ -596,6 +593,10 @@
       border: 1px solid #ff9900;
       border-radius: 5px;
       background-color: #f2f2f2;
+    }
+
+    #signup form input span {
+      color: red;
     }
 
     #signup form input:last-child {
@@ -709,7 +710,7 @@
 
     /* Advertise */
 
-    #advertise {
+    #advertize {
       background-color: white;
       margin: -20px 0px 30px 0px;
       border-radius: 5px;
@@ -717,12 +718,12 @@
       min-height: 407px;
     }
 
-    #advertise #advert {
+    #advertize #advert {
       height: 350px;
       line-height: 5px;
     }
 
-    #advertise #advert img {
+    #advertize #advert img {
       background-size: cover;
       float: right;
       margin: 20px 0px 0px 400px;
@@ -732,7 +733,7 @@
       clip: rect(0px,400px,330px,0px);
     }
 
-    #advertise #advert h1 {
+    #advertize #advert h1 {
       padding: 100px 50px 0px 50px;
       font-size: 40px;
       text-transform: uppercase;
@@ -741,7 +742,7 @@
       cursor: pointer;
     }
 
-    #advertise #advert h2 {
+    #advertize #advert h2 {
       padding: 0px 35px;
       font-size: 50px;
       text-transform: uppercase;
@@ -749,7 +750,7 @@
       cursor: pointer;
     }
 
-    #advertise #advert p {
+    #advertize #advert p {
       padding: 0px 120px;
       font-size: 20px;
       text-transform: uppercase;
@@ -757,7 +758,7 @@
       text-shadow: 2px 2px 1px #d9d9d9;
     }
 
-    #advertise #advert button {
+    #advertize #advert button {
       background-color: white;
       border: 2px solid black;
       width: 150px;
@@ -768,31 +769,35 @@
       transition: background-color .5s;
     }
 
-    #advertise #advert button:hover {
+    #advertize #advert button:hover {
         cursor: pointer;
         background-color: #e8e8e8;
     }
 
-    #advertise #terms {
+    #advertize #terms {
       background-color: #ff9900;
       color: white;
       border-radius: 0px 0px 5px 5px;
     }
 
-    #advertise #terms td {
+    #advertize #terms table, th, td {
+      border: none;
+    }
+
+    #advertize #terms td {
       text-align: center;
       padding: 0px 40px;
       line-height: 10px;
       cursor: pointer;
     }
 
-    #advertise #terms h1 {
+    #advertize #terms h1 {
       text-transform: uppercase;
       font-size: 11px;
       letter-spacing: 5px;
     }
 
-    #advertise #terms p {
+    #advertize #terms p {
       font-size: 11px;
     }
     
@@ -808,7 +813,7 @@
 
     #newproducts {
       background-color: white;
-      margin: 0px 0px 30px 0px;
+      margin: 20px 0px 30px 0px;
       border-radius: 5px;
       box-shadow: 0px 2px 1px #d9d9d9;
       padding: 10px 20px 20px 20px;
@@ -1801,7 +1806,7 @@
     
     /* Advertise */
 
-    #advertise {
+    #advertize {
       clear: both;
       width: 100%;
       background-color: white;
@@ -1811,18 +1816,18 @@
       min-height: 800px;
     }
 
-    #advertise #advert {
+    #advertize #advert {
       line-height: 5px;
     }
 
-    #advertise #advert img {
+    #advertize #advert img {
       display: block;
       margin: 0px auto;
       width: 250px;
       padding-top: 30px;
     }
 
-    #advertise #advert h1 {
+    #advertize #advert h1 {
       text-align: center;
       font-size: 40px;
       text-transform: uppercase;
@@ -1831,7 +1836,7 @@
       cursor: pointer;
     }
 
-    #advertise #advert h2 {
+    #advertize #advert h2 {
       text-align: center;
       font-size: 50px;
       text-transform: uppercase;
@@ -1839,7 +1844,7 @@
       cursor: pointer;
     }
 
-    #advertise #advert p {
+    #advertize #advert p {
       text-align: center;
       font-size: 20px;
       text-transform: uppercase;
@@ -1847,12 +1852,12 @@
       text-shadow: 2px 2px 1px #d9d9d9;
     }
 
-    #advertise #advert form {
+    #advertize #advert form {
       text-align: center;
       margin-top: -20px;
     } 
     
-    #advertise #advert button {
+    #advertize #advert button {
       background-color: white;
       border: 2px solid black;
       width: 150px;
@@ -1863,34 +1868,38 @@
       transition: background-color .5s;
     }
 
-    #advertise #advert button:hover {
+    #advertize #advert button:hover {
         cursor: pointer;
         background-color: #e8e8e8;
     }
 
-    #advertise #terms {
+    #advertize #terms {
       background-color: #ff9900;
       color: white;
       border-radius: 0px 0px 5px 5px;
     }
     
-    #advertise #terms table {
+    #advertize #terms table {
         width: 100%;
     }
 
-    #advertise #terms td {
+    #advertize #terms table, th, td {
+        border: none;
+    }
+
+    #advertize #terms td {
       text-align: center;
       line-height: 10px;
       cursor: pointer;
     }
 
-    #advertise #terms h1 {
+    #advertize #terms h1 {
       text-transform: uppercase;
       font-size: 11px;
       letter-spacing: 5px;
     }
 
-    #advertise #terms p {
+    #advertize #terms p {
       font-size: 11px;
     }
     
@@ -2210,7 +2219,7 @@
 
     header {
       background-color: #1e1e1e;
-      height: 340px;
+      min-height: 300px;
       position: absolute;
     }
     
@@ -2310,7 +2319,7 @@
 
     section {
         margin: 0px auto;
-        margin-top: 340px;
+        margin-top: 300px;
     }
 
     /* SECTION NAV */
@@ -2884,7 +2893,7 @@
     
     /* Advertise */
 
-    #advertise {
+    #advertize {
       clear: both;
       width: 100%;
       background-color: white;
@@ -2894,14 +2903,14 @@
       min-height: 600px;
     }
 
-    #advertise #advert img {
+    #advertize #advert img {
       display: block;
       margin: 0px auto;
       width: 200px;
       padding-top: 30px;
     }
 
-    #advertise #advert h1 {
+    #advertize #advert h1 {
       text-align: center;
       font-size: 28px;
       text-transform: uppercase;
@@ -2910,7 +2919,7 @@
       cursor: pointer;
     }
 
-    #advertise #advert h2 {
+    #advertize #advert h2 {
       text-align: center;
       font-size: 30px;
       text-transform: uppercase;
@@ -2918,7 +2927,7 @@
       cursor: pointer;
     }
 
-    #advertise #advert p {
+    #advertize #advert p {
       text-align: center;
       font-size: 20px;
       text-transform: uppercase;
@@ -2926,12 +2935,12 @@
       text-shadow: 2px 2px 1px #d9d9d9;
     }
 
-    #advertise #advert form {
+    #advertize #advert form {
       text-align: center;
       margin-top: -20px;
     } 
     
-    #advertise #advert button {
+    #advertize #advert button {
       background-color: white;
       border: 2px solid black;
       width: 150px;
@@ -2942,36 +2951,40 @@
       transition: background-color .5s;
     }
 
-    #advertise #advert button:hover {
+    #advertize #advert button:hover {
         cursor: pointer;
         background-color: #e8e8e8;
     }
 
-    #advertise #terms {
+    #advertize #terms {
       background-color: #ff9900;
       color: white;
       border-radius: 0px 0px 5px 5px;
       margin-top: 12px;
     }
     
-    #advertise #terms table {
+    #advertize #terms table {
         width: 100%;
     }
 
-    #advertise #terms td {
+    #advertize #terms table, th, td {
+      border: none;
+    }
+
+    #advertize #terms td {
       text-align: center;
       cursor: pointer;
       width: 30%;
       vertical-align: top;
     }
 
-    #advertise #terms h1 {
+    #advertize #terms h1 {
       text-transform: uppercase;
       font-size: 9px;
       letter-spacing: 5px;
     }
 
-    #advertise #terms p {
+    #advertize #terms p {
       font-size: 10px;
     }
 
