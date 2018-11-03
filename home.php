@@ -234,23 +234,30 @@
                 <div class="converter">
 					<h1>currency converter</h1>
 					<form>
-						<input type="number" name="euro" id="euro">
-                        <p>EUR</p>
-                        <input type="number" name="dollar" id="dollar">
-                        <p>USD</p>
-						<input type="submit" name="convert" id="convert" value="Convert">
-                        <div id="solution"></div>
-					</form>
+
+						<input type="number" name="euro" id="euro" placeholder="EUR TO USD">
+                        <input type="submit" name="convert" id="convert_eur" value="Convert">
+                        <p id="solution_eur"></p>
+
+                        <input type="number" name="dollar" id="dollar" placeholder="USD TO EUR">
+                        <input type="submit" name="convert" id="convert_dollar" value="Convert">
+                        <p id="solution_dollar"></p>
+						
+                    </form>
+
                     <script>
                         $(document).ready(function(){
-                            $('#convert').click(function(){
+                            $('#convert_eur').click(function(){
                                 var val = $('#euro').val();
-                                $('#solution').html((val*1.17).toFixed(3) + " USD.");
-                            });
-                            /* $('#convert').click(function(){
+                                $('#solution_eur').html((val*1.17).toFixed(3) + " USD");
+                            });   
+                        });
+
+                        $(document).ready(function(){
+                            $('#convert_dollar').click(function(){
                                 var val = $('#dollar').val();
-                                $('#euro').html((val*0.85).toFixed(3));
-                            }); */    
+                                $('#solution_dollar').html((val*0.85).toFixed(3) + " EUR");
+                            });
                         });
                     </script>
 				</div>
