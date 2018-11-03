@@ -20,20 +20,7 @@
             } else {
                 x.className = "topnav";
             }
-        }    
-        document.write("<br>");
-        
-        $(document).ready(function(){
-            $('#convert').click(function(){
-                var val = $('#euro').val();
-                $('#dollar').html((val*1.17).toFixed(3));
-            });
-            $('#convert').click(function(){
-                var val = $('#dollar').val();
-                $('#euro').html((val*0.85).toFixed(3));
-            });     
-        });
-        // document.write("<br");
+        }
         
         $(document).ready(function(){
             $("#dropbtn1").click(function(){
@@ -106,7 +93,7 @@
                         echo'<li><a class="actual" href="home.php">Home</a></li>
                             <li><a href="myaccount.php">My Account</a></li>
                             <li><a href="mycart.php">My Cart</a></li>
-                            <li><a href="signin.php">Sign out</a></li>';
+                            <li><a href="signin.php">Sign out, '.$_SESSION['lastname'].'</a></li>';
                         }
                         if(!isset($_SESSION['id'])) {
                         echo'<li><a class="actual" href="home.php">Home</a></li>
@@ -203,6 +190,10 @@
                         <i class="fa fa-bars"></i>
                     </a>
                 </div>
+                <script>
+                    
+
+                </script>
 			</div>
 		</nav>
 
@@ -248,7 +239,20 @@
                         <input type="number" name="dollar" id="dollar">
                         <p>USD</p>
 						<input type="submit" name="convert" id="convert" value="Convert">
+                        <div id="solution"></div>
 					</form>
+                    <script>
+                        $(document).ready(function(){
+                            $('#convert').click(function(){
+                                var val = $('#euro').val();
+                                $('#solution').html((val*1.17).toFixed(3) + " USD.");
+                            });
+                            /* $('#convert').click(function(){
+                                var val = $('#dollar').val();
+                                $('#euro').html((val*0.85).toFixed(3));
+                            }); */    
+                        });
+                    </script>
 				</div>
 			</aside>
 

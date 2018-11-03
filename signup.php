@@ -23,8 +23,7 @@
             } else {
                 x.className = "topnav";
             }
-        }    
-        document.write("<br>");
+        }
         
         $(document).ready(function(){
             $("#dropbtn1").click(function(){
@@ -97,7 +96,7 @@
                         echo'<li><a href="home.php">Home</a></li>
                             <li><a href="myaccount.php">My Account</a></li>
                             <li><a href="mycart.php">My Cart</a></li>
-                            <li><a class="actual" href="signin.php">Sign out</a></li>';
+                            <li><a href="signin.php">Sign out, '.$_SESSION['lastname'].'</a></li>';
                         }
                         if(!isset($_SESSION['id'])) {
                         echo'<li><a href="home.php">Home</a></li>
@@ -216,6 +215,8 @@
                         echo '<p style = "text-align: center; color: red; font-size: 20px;">Invalid register! Please fill in this form!</p>';
                     } else if (isset($_GET['info']) && $_GET['info'] == 'exist') {
                         echo '<p style = "text-align: center; color: red; font-size: 20px;">Invalid register! Email already taken!</p>';
+                    } else if (isset($_GET['info']) && $_GET['info'] == 'invalid_email') {
+                        echo '<p style = "text-align: center; color: red; font-size: 20px;">Invalid email format!</p>';
                     }
                 ?>
                 <p id="loginhere">Already have an account? <a href="signin.php">Login here.</a></p>

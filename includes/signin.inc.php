@@ -7,15 +7,15 @@ if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['password']
 
 	$email = $_POST['email'];
 	$password = $_POST['password'];
-
+	
 	$sql = "SELECT * FROM users WHERE email = '$email'";
 	$result = mysqli_query($connection, $sql);
 	
 	$row = $result->fetch_assoc();
 	$hash = $row['password'];
-
+	
 	$check = password_verify($password, $hash);
-
+	
 	if ($check == 0) {
 		header("Location: ../signin.php?info=incorrect");
 		die();
@@ -32,9 +32,11 @@ if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['password']
 			$_SESSION['username'] = $row['username'];
 			$_SESSION['email'] = $row['email'];
 		}
-
-		header("Location: ../signin.php");
+		
 	}
+
 }
+
+header("Location: ../signin.php");
 
 ?>

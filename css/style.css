@@ -90,14 +90,14 @@
 
     #main-menu form {
       float: right;
-      width: 420px;
+      width: 452px;
       margin: none;
     }
 
     #main-menu form input {
       padding: 5px;
       height: 20px;
-      width: 368px;
+      width: 400px;
       border: 1px solid #ff9900;
       border-radius: 5px 0px 0px 5px;
       background-color: #f2f2f2;
@@ -138,7 +138,7 @@
         color: #ffffff;
         min-height: 40px;
         box-shadow: 0px 2px 1px #d9d9d9;
-        margin-top: -20px;
+        margin-top: 0px;
     }
 
     .dropdown {
@@ -375,7 +375,7 @@
     
     #myaccount {
       background-color: white;
-      margin: 30px 0px;
+      margin: 20px 0px 30px 0px;
       padding: 10px 20px 20px 30px;
       border-radius: 5px;
       box-shadow: 0px 2px 1px #d9d9d9;
@@ -623,7 +623,7 @@
         background-color: white;
         border-radius: 5px;
         box-shadow: 0px 2px 1px #d9d9d9;
-        margin: 30px 0px 150px 0px;
+        margin: 30px 0px 220px 0px;
         padding: 0px 30px;
         overflow: hidden;
     }
@@ -1234,7 +1234,7 @@
         background-color: #ff9900;
         min-height: 40px;
         box-shadow: 0px 2px 1px #d9d9d9;
-        margin-top: -20px;
+        margin-top: 0px;
     }
     
     .dropdown {
@@ -2329,7 +2329,6 @@
         background-color: #ff9900;
         min-height: 40px;
         box-shadow: 0px 2px 1px #d9d9d9;
-        margin-top: -20px;
     }
 
     .dropdown {

@@ -20,8 +20,7 @@
             } else {
                 x.className = "topnav";
             }
-        }    
-        document.write("<br>");
+        }
         
         $(document).ready(function(){
             $("#dropbtn1").click(function(){
@@ -89,7 +88,7 @@
                         echo'<li><a href="home.php">Home</a></li>
                             <li><a href="myaccount.php">My Account</a></li>
                             <li><a href="mycart.php">My Cart</a></li>
-                            <li><a class="actual" href="signin.php">Sign out</a></li>';
+                            <li><a href="signin.php">Sign out, '.$_SESSION['lastname'].'</a></li>';
                         }
                         if(!isset($_SESSION['id'])) {
                         echo'<li><a href="home.php">Home</a></li>
@@ -191,8 +190,14 @@
 
 		<div class="container">
 			<div id="signin">
-                <h1>Sign In</h1>
-                <p>Sign in to your account!</p>
+                <?php 
+                    if(!isset($_SESSION['id'])) {
+                        echo '<h1>Sign In</h1>';
+                        echo '<p>Sign in to your account!</p>';
+                    } else {
+                        echo '<h1>Signed In</h1>';
+                    }
+                ?>
                 <?php
                     if(!isset($_SESSION['id'])) {
                         echo'
@@ -212,10 +217,14 @@
                 <?php 
                     if(isset($_GET['info']) && $_GET['info'] == 'incorrect') {
                         echo '<p style = "text-align: center; color: red; font-size: 20px;">Invalid email or password!</p>';
-                    }
+                    } 
                 ?>
                 
-                <p id="forgotpassword"><a href="#">Forgot password?</a></p>
+                <?php 
+                    if(!isset($_SESSION['id'])) {
+                        echo '<p id="forgotpassword"><a href="#">Forgot password?</a></p>';
+                    }
+                ?>
             </div>
         </div>		
 	</section>
