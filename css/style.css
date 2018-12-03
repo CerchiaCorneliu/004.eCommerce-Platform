@@ -1,6 +1,7 @@
 /*DESKTOP */
 @media only screen and (min-width: 1024px) { 
   /*------------HOME-------------*/
+
     body {
         background-color: #f2f2f2;
         margin: 0px auto;
@@ -18,25 +19,6 @@
     a {
       text-decoration: none;
     }
-
-    .rating {
-      unicode-bidi: bidi-override;
-      direction: rtl;
-      cursor: pointer;
-    }
-    .rating > span {
-      display: inline-block;
-      position: relative;
-      width: 1.1em;
-      color: #ff9900;
-    }
-    .rating > span:hover:before,
-    .rating > span:hover ~ span:before {
-       content: "\2605";
-       position: absolute;
-       color: #ff9900;
-    }
-
 
     /* HEADER */
 
@@ -130,6 +112,70 @@
     section {
         margin-top: 100px;
     }
+    .addtocart form {
+      width: 150px;
+      margin: auto;
+    }
+
+    .addtocart input {
+      width: 90%;
+      margin: 0px auto;
+      text-align: center;
+    }
+
+    .addtocart .productname {
+      border: none;
+      font-weight: bolder;
+      font-size: 15px;
+    }
+
+    .addtocart .dollarsign {
+      font-size: 15px;
+    }
+
+    .addtocart .dollarvalue {
+      width: 36%;
+      border: none;
+      font-size: 15px;
+    }
+
+    .addtocart .quantity {
+      width: 30%;
+      height: 25px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ff9900;
+      text-align: right;
+    }
+
+    .addtocart button {
+      height: 30px;
+      width: 85px;
+      background-color: #ff9900;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color .5s;
+    }
+
+    .addtocart button:hover {
+        background-color: #ffc700;
+    }
+
+    .cartmessage {
+      display: none;
+      background-color: #fff6d6;
+      border: 1px solid #2d2d2d;
+      border-radius: 2px;
+      width: 120px;
+      margin: 5px 45px 0px;
+      color: #2d2d2d;
+      padding: 2px;
+      z-index: 1;
+      overflow: hidden;
+      position: absolute;
+    }
 
     /* SECTION NAV */
 
@@ -211,14 +257,14 @@
 
     aside img {
         width: 200px;
-        margin-top: 20px;
+        margin-top: 0px;
         cursor: pointer;
         transform: scale(1);
         transition: .5s ease;
     }
     
     aside img:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 
     aside p {
@@ -248,15 +294,16 @@
 
     .newsletter {
       width: 220px;
+      height: 200px;
       background-color: white;
-      margin: 30px 30px 30px 0px;
+      margin: 20px 30px 30px 0px;
       padding: 10px 20px 20px 20px;
       border-radius: 5px;
       box-shadow: 0px 2px 1px #d9d9d9;
+      overflow: hidden;
     }
     
     .newsletter p {
-        cursor: auto;
         text-align: center;
     }
     
@@ -293,7 +340,7 @@
     .converter {
       width: 220px;
       background-color: white;
-      margin: 30px 30px 30px 0px;
+      margin: 20px 30px 30px 0px;
       padding: 10px 20px 20px 20px;
       border-radius: 5px;
       box-shadow: 0px 2px 1px #d9d9d9;
@@ -489,7 +536,6 @@
         box-shadow: 0px 2px 1px #d9d9d9;
         margin: 30px 0px;
         padding: 1px 30px 30px 30px;
-        overflow: hidden;
     }
     
     #shoppingcart h1 {
@@ -501,20 +547,24 @@
     
     #shoppingcart table {
         width: 100%;
+        border: 1px solid #e6e6e6;
         margin: 0px auto;
     }
     
     #shoppingcart table tr {
         text-align: center;
     }
-    
-    #shoppingcart table {
-        border-collapse: collapse;
+
+    #shoppingcart tr:nth-child(even) {
+        background-color: #f2f2f2;
     }
-    
+        
     #shoppingcart table, th, td {
-        border: 1px solid #e6e6e6;
-        padding: 10px 0px;
+        border-bottom: 1px solid #e6e6e6;
+    }
+
+    #shoppingcart th, td {
+        padding: 5px 0px;
     }
     
     #shoppingcart #ordertotal a {
@@ -861,7 +911,7 @@
     }
     
     #newproducts .product img:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 
     /* Latest products */
@@ -974,33 +1024,27 @@
     }
 
     #featuredproducts .featuredproduct {
-        height: 80px;
+        height: 90px;
         width: 190px;
         display: inline-block;
         text-align: center;
-        padding: 10px;
+        margin: 0px 10px 100px;
     }
 
     #featuredproducts .featuredproduct img {
         width: 95px;
-        float: left;
         transform: scale(1);
         transition: .5s ease;
     }
     
     #featuredproducts .featuredproduct img:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
     
 
     #featuredproducts .featuredproduct p {
-        float: right;
         font-size: 10px;
         line-height: 0.1px;
-    }
-
-    #featuredproducts .featuredproduct .rating {
-        float: right;
     }
 
     /* SECTION CONTACT */
@@ -1135,25 +1179,6 @@
       text-decoration: none;
     }
 
-    .rating {
-      unicode-bidi: bidi-override;
-      direction: rtl;
-      cursor: pointer;
-    }
-    .rating > span {
-      display: inline-block;
-      position: relative;
-      width: 1.1em;
-      color: #ff9900;
-    }
-    .rating > span:hover:before,
-    .rating > span:hover ~ span:before {
-       content: "\2605";
-       position: absolute;
-       color: #ff9900;
-    }
-
-
     /* HEADER */
 
     header {
@@ -1244,6 +1269,71 @@
 
     section {
        margin-top: 160px;
+    }
+
+    .addtocart form {
+      width: 150px;
+      margin: auto;
+    }
+
+    .addtocart input {
+      width: 90%;
+      margin: 0px auto;
+      text-align: center;
+    }
+
+    .addtocart .productname {
+      border: none;
+      font-weight: bolder;
+      font-size: 15px;
+    }
+
+    .addtocart .dollarsign {
+      font-size: 15px;
+    }
+
+    .addtocart .dollarvalue {
+      width: 36%;
+      border: none;
+      font-size: 15px;
+    }
+
+    .addtocart .quantity {
+      width: 30%;
+      height: 25px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ff9900;
+      text-align: right;
+    }
+
+    .addtocart button {
+      height: 30px;
+      width: 150px;
+      background-color: #ff9900;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color .5s;
+    }
+
+    .addtocart button:hover {
+        background-color: #ffc700;
+    }
+
+    .cartmessage {
+      display: none;
+      background-color: #fff6d6;
+      border: 1px solid #2d2d2d;
+      border-radius: 2px;
+      width: 120px;
+      margin: 5px 100px 0px;
+      color: #2d2d2d;
+      padding: 2px;
+      z-index: 1;
+      overflow: hidden;
+      position: absolute;
     }
 
     /* SECTION NAV */
@@ -1359,7 +1449,7 @@
     .newsletter {
       margin: 30px auto;
       clear: both;
-      min-height: 170px;
+      min-height: 190px;
       background-color: white;
       padding: 10px 20px 0px 20px;
       border-radius: 5px;
@@ -1382,7 +1472,7 @@
       padding: 5px;
       height: 20px;
       width: 210px;
-      margin-bottom: 10px;
+      margin-bottom: 0px;
       border: 1px solid #ff9900;
       border-radius: 5px 0px 0px 5px;
       background-color: #f2f2f2;
@@ -1629,13 +1719,16 @@
         text-align: center;
     }
     
-    #shoppingcart table {
-        border-collapse: collapse;
+    #shoppingcart tr:nth-child(even) {
+      background-color: #f2f2f2;
     }
     
     #shoppingcart table, th, td {
         border: 1px solid #e6e6e6;
-        padding: 10px 0px;
+    }
+
+    #shoppingcart th, td {
+        padding: 5px 0px;
     }
     
     #shoppingcart #ordertotal a {
@@ -1850,7 +1943,7 @@
       clear: both;
       width: 100%;
       background-color: white;
-      margin: 30px 0px 30px 0px;
+      margin: 50px 0px 30px 0px;
       border-radius: 5px;
       box-shadow: 0px 2px 1px #d9d9d9;
       min-height: 800px;
@@ -2236,25 +2329,6 @@
       text-decoration: none;
     }
 
-    .rating {
-      unicode-bidi: bidi-override;
-      direction: rtl;
-      cursor: pointer;
-    }
-    .rating > span {
-      display: inline-block;
-      position: relative;
-      width: 1.1em;
-      color: #ff9900;
-    }
-    .rating > span:hover:before,
-    .rating > span:hover ~ span:before {
-       content: "\2605";
-       position: absolute;
-       color: #ff9900;
-    }
-
-
     /* HEADER */
 
     header {
@@ -2362,6 +2436,71 @@
         margin-top: 300px;
     }
 
+    .addtocart form {
+      width: 150px;
+      margin: auto;
+    }
+
+    .addtocart input {
+      width: 90%;
+      margin: 0px auto;
+      text-align: center;
+    }
+
+    .addtocart .productname {
+      border: none;
+      font-weight: bolder;
+      font-size: 15px;
+    }
+
+    .addtocart .dollarsign {
+      font-size: 15px;
+    }
+
+    .addtocart .dollarvalue {
+      width: 36%;
+      border: none;
+      font-size: 15px;
+    }
+
+    .addtocart .quantity {
+      width: 30%;
+      height: 25px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ff9900;
+      text-align: right;
+    }
+
+    .addtocart button {
+      height: 30px;
+      width: 150px;
+      background-color: #ff9900;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color .5s;
+    }
+
+    .addtocart button:hover {
+        background-color: #ffc700;
+    }
+
+    .cartmessage {
+      display: none;
+      background-color: #fff6d6;
+      border: 1px solid #2d2d2d;
+      border-radius: 2px;
+      width: 120px;
+      margin: 5px 45px 0px;
+      color: #2d2d2d;
+      padding: 2px;
+      z-index: 1;
+      overflow: hidden;
+      position: absolute;
+    }
+
     /* SECTION NAV */
 
     nav {
@@ -2450,7 +2589,7 @@
     }
     
     .deal {
-        height: 320px;
+        height: 300px;
         margin: 30px auto;
         background-color: white;
         border-radius: 5px;
@@ -2493,9 +2632,9 @@
       padding: 5px;
       height: 20px;
       width: 210px;
-      margin-bottom: 10px;
+      margin-bottom: 0px;
       border: 1px solid #ff9900;
-      border-radius: 5px;
+      border-radius: 5px 0px 0px 5px;
       background-color: #f2f2f2;
     }
 
@@ -2506,7 +2645,7 @@
       border: none;
       color: white;
       overflow: hidden;
-      border-radius: 5px;
+      border-radius: 0px 5px 5px 0px;
       cursor: pointer;
       transition: background-color .5s;
     }
@@ -2540,24 +2679,8 @@
       height: 20px;
       width: 210px;
       border: 1px solid #ff9900;
-      border-radius: 5px;
+      border-radius: 5px 0px 0px 5px;
       background-color: #f2f2f2;
-    }
-
-    .converter form input:last-child {
-      height: 30px;
-      width: 100px;
-      background-color: #ff9900;
-      border: none;
-      color: white;
-      overflow: hidden;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color .5s;
-    }
-
-    .converter form input:last-child:hover {
-        background-color: #ffc700;
     }
     
     /*------------MY ACCOUNT-------------*/
@@ -2700,7 +2823,7 @@
         border-radius: 5px;
         box-shadow: 0px 2px 1px #d9d9d9;
         margin: 30px 0px;
-        padding: 1px 30px 30px 30px;
+        padding: 1px 5px 30px;
         overflow: hidden;
     }
     
@@ -2714,16 +2837,28 @@
     #shoppingcart table {
         width: 100%;
         margin: 0px auto;
-        border-collapse: collapse;
+        font-size: 13px;
+        font-weight: bold;
     }
     
     #shoppingcart table tr {
         text-align: center;
     }
+
+    #shoppingcart tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
     
     #shoppingcart table, th, td {
         border: 1px solid #e6e6e6;
-        padding: 10px 0px;
+    }
+
+    #shoppingcart th, td {
+        padding: 5px 0px;
+    }
+
+    #shoppingcart td {
+        font-size: 15px;
     }
     
     #shoppingcart #ordertotal a {
@@ -2747,7 +2882,6 @@
     }
     
     #shoppingcart #ContinueShopping {       
-        float: left;
         width: 200px;
         height: 30px;
         margin: 30px 0px 0px;
@@ -2922,7 +3056,7 @@
         transition: .5s ease;
     }
     
-    aside img:hover {
+    article img:hover {
         transform: scale(1.1);
     }
     

@@ -190,77 +190,148 @@
                         <i class="fa fa-bars"></i>
                     </a>
                 </div>
-                <script>
-                    
-
-                </script>
 			</div>
 		</nav>
 
 		<div class="container">
 			<aside>
-                <div class="deal">
-                    <div id="deal1">
-                        <h1>hot deal</h1>
-                        <img src="img/apple-iphone_xs.png">
-                        <div class="paragraph">
-                            <p>Lorem Ipsum Dolor</p>
-                            <p><del>$400</del> $300</p>
-                        </div>
-                        <div class="rating">
-                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        </div>
-                    </div>
-                    <div id="deal2">
-                        <h1>special deal</h1>
-                        <img src="img/macbook.jpg">
-                        <div class="paragraph">
-                            <p>Lorem Ipsum Dolor</p>
-                            <p><del>$600</del> $500</p>
-                        </div>
-                        <div class="rating">
-                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        </div>
-                    </div>
-                </div>
-				<div class="newsletter">
-					<h1>newsletters</h1>
-					<p>Sign Up for Our Newsletter!</p>
-					<form>
-						<input type="email" name="email" placeholder="Enter Email address">
-                        <input type="submit" name="subscribe" value="Subscribe">
-					</form>
-				</div>
-                <div class="converter">
-					<h1>currency converter</h1>
-					<form>
+                <?php 
+                    if(!isset($_SESSION['id'])) {
+                        echo'
+                            <div class="newsletter">
+                                <h1>newsletters</h1>
+                                <p>Subscribe for Our Newsletter!</p>
+                                <form method="post" action="includes/subscribe.inc.php#imagelogo">
+                                    <input type="email" name="emailsub" placeholder="Enter Email address">
+                                    <input type="submit" name="subscribe" id="subscribe" value="Subscribe">
+                                </form>
+                            </div>';
+                        if(isset($_GET['info']) && $_GET['info'] == 'subscribed') {
+                            echo '<p style = "text-align: center; color: green; font-size: 15px; margin-top: -60px; margin-bottom: 40px;">Thank you for your subscription!</p>';
+                        } else if (isset($_GET['info']) && $_GET['info'] == 'unsubscribed') {
+                            echo '<p style = "text-align: center; color: red; font-size: 15px; margin-top: -60px; margin-bottom: 40px;">Invalid subscription! Fill in this form!</p>';
+                        } else if (isset($_GET['info']) && $_GET['info'] == 'existsubscribed') {
+                            echo '<p style = "text-align: center; color: red; font-size: 15px; margin-top: -60px; margin-bottom: 40px;">Invalid register! Email already exists!</p>';
+                        } else if (isset($_GET['info']) && $_GET['info'] == 'invalid_email_subscribe') {
+                            echo '<p style = "text-align: center; color: red; font-size: 15px; margin-top: -60px; margin-bottom: 40px;">Invalid email format!</p>';
+                        }
+                    } else {
+                        echo '<div class="newsletter" style = "display: none;"></div>';
+                    }
 
-						<input type="number" name="euro" id="euro" placeholder="EUR TO USD">
+                ?>
+
+                <div class="converter">
+                    <h1>currency converter</h1>
+                    <form>
+                        <input type="number" name="euro" id="euro" placeholder="EUR TO USD">
                         <input type="submit" name="convert" id="convert_eur" value="Convert">
                         <p id="solution_eur"></p>
 
                         <input type="number" name="dollar" id="dollar" placeholder="USD TO EUR">
                         <input type="submit" name="convert" id="convert_dollar" value="Convert">
-                        <p id="solution_dollar"></p>
-						
+                        <p id="solution_dollar"></p>                       
                     </form>
 
                     <script>
                         $(document).ready(function(){
                             $('#convert_eur').click(function(){
                                 var val = $('#euro').val();
-                                $('#solution_eur').html((val*1.17).toFixed(3) + " USD");
+                                if(val >= 0) {
+                                    $('#solution_eur').html((val*1.17).toFixed(2) + " USD"); 
+                                    } else {
+                                    $('#solution_eur').html("Negative value!");
+                                    }
+                                return false;
                             });   
                         });
 
                         $(document).ready(function(){
                             $('#convert_dollar').click(function(){
                                 var val = $('#dollar').val();
-                                $('#solution_dollar').html((val*0.85).toFixed(3) + " EUR");
+                                if(val >= 0) {
+                                    $('#solution_dollar').html((val*0.85).toFixed(2) + " EUR");
+                                    } else {
+                                    $('#solution_dollar').html("Negative value!");
+                                    }
+                                return false;
                             });
                         });
                     </script>
-				</div>
+
+                </div>
+                <div class="deal">
+                    <div id="deal1">
+                        <h1>hot deal</h1>
+                        <img src="img/apple-iphone_xs.png">
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="iPhone XS">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="1099.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart1">Add To Cart</button>
+                            </form>
+                        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage1">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart1").mouseover(function(){
+                                            $("#cartmessage1").show();
+                                        });
+                                        $("#cart1").mouseleave(function(){
+                                            $("#cartmessage1").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>                       
+                    </div>
+                    <div id="deal2">
+                        <h1>special deal</h1>
+                        <img src="img/macbook.jpg">
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="Macbook 2017">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="1299.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart2">Add To Cart</button>
+                            </form>
+                        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage2">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart2").mouseover(function(){
+                                            $("#cartmessage2").show();
+                                        });
+                                        $("#cart2").mouseleave(function(){
+                                            $("#cartmessage2").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
+                    </div>
+                </div>           
 			</aside>
 
 			<article>
@@ -298,46 +369,142 @@
 					<h1>new products</h1>
 					<div class="product">
 				        <img src="img/iphone x.jpg">
-                        <div class="paragraph">
-                            <p>Lorem Ipsum Dolor</p>
-                            <p><del>$1000</del> $900</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="iPhone X">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="999.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart3">Add To Cart</button>
+                            </form>
                         </div>
-				        <div class="rating">
-				            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage3">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart3").mouseover(function(){
+                                            $("#cartmessage3").show();
+                                        });
+                                        $("#cart3").mouseleave(function(){
+                                            $("#cartmessage3").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 
 					<div class="product">
 				        <img src="img/nikon SL1500.jpg">
-                        <div class="paragraph">
-                            <p>Lorem Ipsum Dolor</p>
-                            <p><del>$2000</del> $1700</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="Nikon SL1500">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="899.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart4">Add To Cart</button>
+                            </form>
                         </div>
-				        <div class="rating">
-    				        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage4">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart4").mouseover(function(){
+                                            $("#cartmessage4").show();
+                                        });
+                                        $("#cart4").mouseleave(function(){
+                                            $("#cartmessage4").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 
 					<div class="product">
 				        <img src="img/lenovo legion.jpg">
-                        <div class="paragraph">
-				            <p>Lorem Ipsum Dolor</p>
-							<p><del>$1500</del> $1400</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="Lenovo Legion">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="599.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart5">Add To Cart</button>
+                            </form>
                         </div>
-				        <div class="rating">
-							 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-				        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage5">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart5").mouseover(function(){
+                                            $("#cartmessage5").show();
+                                        });
+                                        $("#cart5").mouseleave(function(){
+                                            $("#cartmessage5").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 
 					<div class="product">
 				        <img src="img/lyra voices.jpg">
-                        <div class="paragraph">
-							<p>Lorem Ipsum Dolor</p>
-							<p><del>$300</del> $280</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="Lyra Voices">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="299.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart6">Add To Cart</button>
+                            </form>
                         </div>
-				        <div class="rating">
-							 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage6">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart6").mouseover(function(){
+                                            $("#cartmessage6").show();
+                                        });
+                                        $("#cart6").mouseleave(function(){
+                                            $("#cartmessage6").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 				</div>
 
@@ -345,46 +512,142 @@
 					<h1>latest products</h1>
 					<div class="product">
 				        <img src="img/dynaudio.jpg">
-                        <div class="paragraph">
-							<p>Lorem Ipsum Dolor</p>
-							<p><del>$200</del> $180</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="Dyna Audio">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="299.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart7">Add To Cart</button>
+                            </form>
                         </div>
-				        <div class="rating">
-							 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage7">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart7").mouseover(function(){
+                                            $("#cartmessage7").show();
+                                        });
+                                        $("#cart7").mouseleave(function(){
+                                            $("#cartmessage7").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 
 					<div class="product">
 				        <img src="img/2016-SUHD-TV.jpg">
-                        <div class="paragraph">
-				            <p>Lorem Ipsum Dolor</p>
-							<p><del>$1800</del> $1400</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="Samsung SUHD">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="1099.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart8">Add To Cart</button>
+                            </form>
                         </div>
-				        <div class="rating">
-							 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-				        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage8">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart8").mouseover(function(){
+                                            $("#cartmessage8").show();
+                                        });
+                                        $("#cart8").mouseleave(function(){
+                                            $("#cartmessage8").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 
 					<div class="product">
 				        <img src="img/BookSmall.jpg">
-                        <div class="paragraph">
-							<p>Lorem Ipsum Dolor</p>
-							<p><del>$1200</del> $1000</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="BookSmall">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="499.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart9">Add To Cart</button>
+                            </form>
                         </div>
-				        <div class="rating">
-							 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage9">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart9").mouseover(function(){
+                                            $("#cartmessage9").show();
+                                        });
+                                        $("#cart9").mouseleave(function(){
+                                            $("#cartmessage9").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 
 					<div class="product">
 				        <img src="img/xbox-one-microsoft.jpg">
-                        <div class="paragraph">
-							<p>Lorem Ipsum Dolor</p>
-							<p><del>$500</del> $450</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="Xbox One Microsoft">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="399.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart10">Add To Cart</button>
+                            </form>
                         </div>
-				        <div class="rating">
-							 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage10">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart10").mouseover(function(){
+                                            $("#cartmessage10").show();
+                                        });
+                                        $("#cart10").mouseleave(function(){
+                                            $("#cartmessage10").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 				</div>
 
@@ -401,68 +664,213 @@
 					<h1>featured products</h1>
 					<div class="featuredproduct">
 				        <img src="img/iPhone6.jpg">
-                        <div class="paragraph">
-							<p>Lorem Ipsum Dolor</p>
-							<p><del>$700</del> $600</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="iPhone6 64Gb">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="499.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart11">Add To Cart</button>
+                            </form>
                         </div>
-				        <div class="rating">
-							 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-				        </div>
-					</div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage11">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart11").mouseover(function(){
+                                            $("#cartmessage11").show();
+                                        });
+                                        $("#cart11").mouseleave(function(){
+                                            $("#cartmessage11").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>					
+                    </div>
 
 					<div class="featuredproduct">
 				        <img src="img/imac.jpg">
-                        <div class="paragraph">
-							<p>Lorem Ipsum Dolor</p>
-							<p><del>$1800</del> $1400</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="iMac 512Gb">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="1599.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart12">Add To Cart</button>
+                            </form>
+
                         </div>
-				        <div class="rating">
-							 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-				        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage12">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart12").mouseover(function(){
+                                            $("#cartmessage12").show();
+                                        });
+                                        $("#cart12").mouseleave(function(){
+                                            $("#cartmessage12").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 
 					<div class="featuredproduct">
 				        <img src="img/tv4k.jpg">
-                        <div class="paragraph">
-							<p>Lorem Ipsum Dolor</p>
-							<p><del>$1200</del> $1000</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="Samsung 4k">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="1399.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart13">Add To Cart</button>
+                            </form>
                         </div>
-				        <div class="rating">
-							 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-				        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage13">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart13").mouseover(function(){
+                                            $("#cartmessage13").show();
+                                        });
+                                        $("#cart13").mouseleave(function(){
+                                            $("#cartmessage13").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 
 					<div class="featuredproduct">
 				        <img src="img/ipad.jpg">
-                        <div class="paragraph">
-							<p>Lorem Ipsum Dolor</p>
-							<p><del>$600</del> $550</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="iPad 128Gb">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="399.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart14">Add To Cart</button>
+                            </form>
                         </div>
-				        <div class="rating">
-							 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-				        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage14">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart14").mouseover(function(){
+                                            $("#cartmessage14").show();
+                                        });
+                                        $("#cart14").mouseleave(function(){
+                                            $("#cartmessage14").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 
 					<div class="featuredproduct">
 				        <img src="img/galaxy-j5.jpg">
-                        <div class="paragraph">
-							<p>Lorem Ipsum Dolor</p>
-							<p><del>$400</del> $350</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="Galaxy J5">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="249.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart15">Add To Cart</button>
+                            </form>
                         </div>
-				        <div class="rating">
-							 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-				        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage15">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart15").mouseover(function(){
+                                            $("#cartmessage15").show();
+                                        });
+                                        $("#cart15").mouseleave(function(){
+                                            $("#cartmessage15").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 
 					<div class="featuredproduct">
 				        <img src="img/dims.jpg">
-                        <div class="paragraph">
-							<p>Lorem Ipsum Dolor</p>
-							<p><del>$250</del> $220</p>
+                        <div class="addtocart">
+                            <form method="POST" action="includes/addtocart.inc.php">
+                                <input class="productname" type="text" name="product_name" readonly value="MagicKeyboard">
+                                <br>
+                                <span class="dollarsign">$</span>
+                                <input class="dollarvalue" type="text" name="price" readonly value="149.99">
+                                <br>
+                                <span>Quantity</span>
+                                <input class="quantity" type="number" name="quantity" value="1">
+                                <input type="number" name="user_id" value="<?php echo $_SESSION['id'];?>" hidden>
+                                <button id="cart16">Add To Cart</button>
+                            </form>                        
                         </div>
-				        <div class="rating">
-						      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-				        </div>
+                        <?php 
+                            if(!isset($_SESSION['id'])) {
+                            echo'
+                                <div class="cartmessage" id="cartmessage16">Please Sign In!</div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#cart16").mouseover(function(){
+                                            $("#cartmessage16").show();
+                                        });
+                                        $("#cart16").mouseleave(function(){
+                                            $("#cartmessage16").hide();
+                                        });
+                                    });
+                                </script>'; 
+                            } else {
+                            echo '<div class="cartmessage" style = "display: none;"></div>';
+                            }
+                        ?>
 					</div>
 				</div>
             </article>

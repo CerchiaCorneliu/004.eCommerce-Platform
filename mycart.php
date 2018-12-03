@@ -196,49 +196,61 @@
 		<div class="container">
 			<div id="shoppingcart">
                 <h1>Your shopping cart</h1>
+
+                <?php 
+                    // Prepare variabiles for db connection
+                    $serverName = "localhost";
+                    $userName = "root";
+                    $password = "";
+                    $dbName = "authentication";
+
+                    // Create connection
+                    $conn = new mysqli($serverName,$userName,$password,$dbName);
+
+                    // Check connection
+                    if($conn->connect_error) {
+                        die("Connection failed".$conn->connect_error);
+                    }
+                    
+                    $query = mysqli_query($conn,'SELECT * FROM cart WHERE user_id='.$_SESSION['id']);
+                ?>
+
                 <table>
                     <tr>
-                        <th>Serial</th>
-                        <th>Name</th>
+                        <th>ID</th>
+                        <th>USER ID</th>
+                        <th>Product Name</th>
                         <th>Price</th>
                         <th>Qty</th>
                         <th>Amount</th>
                         <th>Options</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Lorem Ipsum Dolor</td>
-                        <td>$100</td>
-                        <td>2</td>
-                        <td>$200</td>
-                        <td><a href="#">Cancel</a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Lorem Ipsum Dolor</td>
-                        <td>$300</td>
-                        <td>1</td>
-                        <td>$300</td>
-                        <td><a href="#">Cancel</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Lorem Ipsum Dolor</td>
-                        <td>$90</td>
-                        <td>2</td>
-                        <td>$180</td>
-                        <td><a href="#">Cancel</a></td>
-                    </tr>
+                    <?php
+                        $total = 0;
+                        while($row = mysqli_fetch_array($query)) {   
+                            $amount = ($row['price'] * $row['quantity']);
+                            $total += $amount;
+                            echo "<tr>
+                                    <td>".$row['id']."</td>
+                                    <td>".$row['user_id']."</td>
+                                    <td>".$row['product_name']."</td>
+                                    <td>"."$".$row['price']."</td>
+                                    <td>".$row['quantity']."</td>
+                                    <td>"."$".$amount."</td>
+                                    <td><a href='includes/deletefromcart.inc.php?product_name=".$row['product_name']."'>Remove</a></td>
+                                </tr>";                           
+                        }
+                        mysqli_close($conn);
+                        echo "<tr><td colspan='7'>"."Order Total: "."$".$total."</td></tr>";
+                    ?>
                     <tr id="ordertotal">
-                        <td colspan="6">
-                            <p>Order Total: $680</p>
+                        <td colspan="7">
                             <button><a href="#">Clear Cart</a></button>
-                            <button><a href="#">Update Cart</a></button>
                             <button><a href="#">Place Order</a></button>
                         </td>
                     </tr>
                 </table>
-                <button id="ContinueShopping"><a href="#">Continue shopping</a></button>
+                <button id="ContinueShopping"><a href="home.php">Continue shopping</a></button>
             </div>
         </div>		
 	</section>

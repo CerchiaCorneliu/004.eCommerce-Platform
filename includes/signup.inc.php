@@ -36,7 +36,6 @@ if(!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['u
 		header ("Location: ../signup.php?info=ok");
 	}
 
-
 } else {
 	header ("Location: ../signup.php?info=error");
 }

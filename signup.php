@@ -210,7 +210,7 @@
                 </form>
                 <?php 
                     if(isset($_GET['info']) && $_GET['info'] == 'ok') {
-                        echo '<p style = "text-align: center; color: green; font-size: 20px;">Your account has been created succesfully!</p>';
+                        echo '<p style = "text-align: center; color: green; font-size: 20px;">Your account has been created succesfully! Please Login!</p>';
                     } else if (isset($_GET['info']) && $_GET['info'] == 'error') {
                         echo '<p style = "text-align: center; color: red; font-size: 20px;">Invalid register! Please fill in this form!</p>';
                     } else if (isset($_GET['info']) && $_GET['info'] == 'exist') {
