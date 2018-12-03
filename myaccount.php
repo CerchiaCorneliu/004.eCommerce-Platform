@@ -83,11 +83,6 @@
             </div>
 			<div id="main-menu">
 				<ul>
-                    <!--<li><a href="home.php">Home</a></li>
-					<li><a class="actual" href="myaccount.php">My Account</a></li>
-					<li><a href="mycart.php">My Cart</a></li>
-					<li><a href="signup.php">Sign up</a></li>
-					<li><a href="signin.php">Sign in</a></li>-->
                     <?php 
                         if(isset($_SESSION['id'])) {
                         echo'<li><a href="home.php">Home</a></li>
