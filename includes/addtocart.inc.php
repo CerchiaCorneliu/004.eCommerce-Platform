@@ -1,5 +1,7 @@
 <?php 
 
+session_start(); 
+
 require 'connection.php';
 
 if(!empty($_POST['product_name']) && !empty($_POST['price']) && !empty($_POST['quantity']) && !empty($_POST['user_id']) && isset($_POST['product_name']) && isset($_POST['price']) && isset($_POST['quantity']) && isset($_POST['user_id'])) {
