@@ -213,7 +213,6 @@
 
                 <table>
                     <tr>
-                        <th>ID</th>
                         <th>USER ID</th>
                         <th>Product Name</th>
                         <th>Price</th>
@@ -227,7 +226,6 @@
                             $amount = ($row['price'] * $row['quantity']);
                             $total += $amount;
                             echo "<tr>
-                                    <td>".$row['id']."</td>
                                     <td>".$row['user_id']."</td>
                                     <td>".$row['product_name']."</td>
                                     <td>"."$".$row['price']."</td>
@@ -237,10 +235,10 @@
                                 </tr>";                           
                         }
                         mysqli_close($conn);
-                        echo "<tr><td colspan='7'>"."Order Total: "."$".$total."</td></tr>";
+                        echo "<tr><td colspan='6'>"."Order Total: "."$".$total."</td></tr>";
                     ?>
                     <tr id="ordertotal">
-                        <td colspan="7">
+                        <td colspan="6">
                             <button><a href="#">Clear Cart</a></button>
                             <button><a href="#">Place Order</a></button>
                         </td>
