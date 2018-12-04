@@ -16,7 +16,7 @@ if(!empty($_POST['product_name']) && !empty($_POST['price']) && !empty($_POST['q
 	$check = mysqli_num_rows($result);
 
 	if($check > 0) {
-		header("Location: ../home.php?info=exist");
+		header("Location: ../home.php");
 		die();
 	} else {
 		$sql = "INSERT INTO cart (product_name, price, quantity, user_id) VALUES ('$product_name', '$price', '$quantity','$user_id')";

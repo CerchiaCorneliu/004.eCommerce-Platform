@@ -222,7 +222,7 @@
                     </tr>
                     <?php
                         $total = 0;
-                        while($row = mysqli_fetch_array($query)) {   
+                        while($row = mysqli_fetch_array($query)) { 
                             $amount = ($row['price'] * $row['quantity']);
                             $total += $amount;
                             echo "<tr>
@@ -232,17 +232,18 @@
                                     <td>".$row['quantity']."</td>
                                     <td>"."$".$amount."</td>
                                     <td><a href='includes/deletefromcart.inc.php?product_name=".$row['product_name']."'>Remove</a></td>
-                                </tr>";                           
+                                </tr>";
+                            echo "<tr id='ordertotal'>
+                                    <td colspan='6'><button><a href='includes/deletefromcart.inc.php?user_id=".$row['user_id']."'>Clear Cart</a></button><button><a href='#'>Place Order</a></button></td>
+                                </tr>";
+                           
+                        }
+                        while($row = mysqli_fetch_array($query)) {
                         }
                         mysqli_close($conn);
                         echo "<tr><td colspan='6'>"."Order Total: "."$".$total."</td></tr>";
                     ?>
-                    <tr id="ordertotal">
-                        <td colspan="6">
-                            <button><a href="#">Clear Cart</a></button>
-                            <button><a href="#">Place Order</a></button>
-                        </td>
-                    </tr>
+                    
                 </table>
                 <button id="ContinueShopping"><a href="home.php">Continue shopping</a></button>
             </div>
