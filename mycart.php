@@ -233,17 +233,17 @@
                                     <td>"."$".$amount."</td>
                                     <td><a href='includes/deletefromcart.inc.php?product_name=".$row['product_name']."'>Remove</a></td>
                                 </tr>";
-                            echo "<tr id='ordertotal'>
-                                    <td colspan='6'><button><a href='includes/deletefromcart.inc.php?user_id=".$row['user_id']."'>Clear Cart</a></button><button><a href='#'>Place Order</a></button></td>
-                                </tr>";
-                           
-                        }
-                        while($row = mysqli_fetch_array($query)) {
+                            
                         }
                         mysqli_close($conn);
+
                         echo "<tr><td colspan='6'>"."Order Total: "."$".$total."</td></tr>";
-                    ?>
-                    
+
+                        echo "<tr id='ordertotal'>
+                                    <td colspan='6'><button><a href='includes/deletefromcart.inc.php?user_id=".$_SESSION['id']."'>Clear Cart</a></button><button><a href='#'>Place Order</a></button></td>
+                                </tr>";
+       
+                    ?>    
                 </table>
                 <button id="ContinueShopping"><a href="home.php">Continue shopping</a></button>
             </div>

@@ -17,7 +17,7 @@ if(!empty($_GET['product_name']) && isset($_GET['product_name'])) {
 	}
 
 } else {
-	header ("Location: ../home.php?info=error");
+	header ("Location: ../mycart.php?info=error");
 }
 
 if(!empty($_GET['user_id']) && isset($_GET['user_id'])) {
@@ -33,7 +33,7 @@ if(!empty($_GET['user_id']) && isset($_GET['user_id'])) {
 	}
 
 } else {
-	header ("Location: ../home.php?info=error");
+	header ("Location: ../mycart.php?info=error");
 }
 
 
