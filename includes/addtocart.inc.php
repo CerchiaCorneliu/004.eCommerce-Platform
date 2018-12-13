@@ -15,8 +15,7 @@ if(!empty($_POST['product_name']) && !empty($_POST['price']) && !empty($_POST['q
 	$result = mysqli_query($connection, $sql);
 	$check = mysqli_num_rows($result);
 
-	if($row = mysqli_fetch_row($result)) {
-			
+	if($row = mysqli_fetch_row($result)) {	
 		$updatequantity = $row[0] + $quantity;
 		$sql = "UPDATE cart SET quantity = ".$updatequantity." WHERE user_id = ".$_SESSION['id']." AND product_name='$product_name'";
 		$result = mysqli_query($connection, $sql);

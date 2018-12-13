@@ -36,13 +36,15 @@
       margin: 35px 0px 35px 10px;
       float: left;
       width: 250px;
-      transform: scale(1);
+      -webkit-transform: scale(1);
+              transform: scale(1);
       transition: .5s ease;
       cursor: pointer;
     }
 
     header img:hover {
-      transform: scale(1.05);
+      -webkit-transform: scale(1.05);
+              transform: scale(1.05);
     }
 
     #main-menu {
@@ -259,12 +261,14 @@
         width: 200px;
         margin-top: 0px;
         cursor: pointer;
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
         transition: .5s ease;
     }
     
     aside img:hover {
-        transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+                transform: scale(1.05);
     }
 
     aside p {
@@ -536,6 +540,7 @@
         box-shadow: 0px 2px 1px #d9d9d9;
         margin: 30px 0px;
         padding: 1px 30px 30px 30px;
+        min-height: 400px;
     }
     
     #shoppingcart h1 {
@@ -906,12 +911,14 @@
     
     #newproducts .product img {
         width: 100px;
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
         transition: .5s ease;
     }
     
     #newproducts .product img:hover {
-        transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+                transform: scale(1.05);
     }
 
     /* Latest products */
@@ -942,12 +949,14 @@
 
     #latestproducts .product img {
         width: 100px;
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
         transition: .5s ease;
     }
     
     #latestproducts .product img:hover {
-        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+                transform: scale(1.1);
     }
 
     /* Special product */
@@ -1033,12 +1042,14 @@
 
     #featuredproducts .featuredproduct img {
         width: 95px;
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
         transition: .5s ease;
     }
     
     #featuredproducts .featuredproduct img:hover {
-        transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+                transform: scale(1.05);
     }
     
 
@@ -1195,13 +1206,15 @@
       display: block;
       margin: 20px auto;
       width: 250px;
-      transform: scale(1);
+      -webkit-transform: scale(1);
+              transform: scale(1);
       transition: .5s ease;
     }
 
     header img:hover {
       cursor: pointer;
-      transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+              transform: scale(1.1);
     }
 
     #main-menu {
@@ -1411,12 +1424,14 @@
         height: 150px;
         margin-top: 20px;
         cursor: pointer;
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
         transition: .5s ease;
     }
     
     aside img:hover {
-        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+                transform: scale(1.1);
     }
 
     aside p {
@@ -1925,12 +1940,14 @@
     
     article img {
         cursor: pointer;
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
         transition: .5s ease;
     }
     
     article img:hover {
-        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+                transform: scale(1.1);
     }
     
     article p {
@@ -2349,13 +2366,15 @@
       display: block;
       margin: 20px auto;
       width: 200px;
-      transform: scale(1);
+      -webkit-transform: scale(1);
+              transform: scale(1);
       transition: .5s ease;
     }
 
     header img:hover {
       cursor: pointer;
-      transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+              transform: scale(1.1);
     }
 
     #main-menu {
@@ -2575,12 +2594,14 @@
         height: 90px;
         margin-top: 0px;
         cursor: pointer;
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
         transition: .5s ease;
     }
     
     aside img:hover {
-        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+                transform: scale(1.1);
     }
 
     aside p {
@@ -3052,12 +3073,14 @@
     /* SECTION ARTICLE */
     .article img {
         cursor: pointer;
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
         transition: .5s ease;
     }
     
     article img:hover {
-        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+                transform: scale(1.1);
     }
     
     .article p {
