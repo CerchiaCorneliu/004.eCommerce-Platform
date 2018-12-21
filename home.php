@@ -98,7 +98,7 @@
                     ?>
 				</ul>
 				<form>
-					<input type="text" name="search" placeholder="Search here...">
+					<input name="search" placeholder="Search here...">
 					<button type="submit"><i class="fa fa-search"></i></button>
 				</form>
 			</div>
