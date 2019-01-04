@@ -199,6 +199,7 @@
                     <input type="text" name="firstname" placeholder="First Name *">
                     <input type="text" name="lastname" placeholder="Last Name *">
                     <input type="text" name="username" placeholder="Username *">
+                    <input type="text" name="address" placeholder="Address *">
                     <input type="email" name="email" placeholder="E-mail *">
                     <input type="password" name="password" placeholder="Password *">
                     <input type="submit" name="signup" value="Sign Up">

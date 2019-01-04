@@ -197,7 +197,7 @@
                         <li><a href="#">Forgotten Password</a></li>
                         <li><a href="#">My Account</a></li>
                         <li><a href="#">Wish List</a></li>
-                        <li><a href="#">Order History</a></li>
+                        <li><a href="orderinformation.php">Order Information</a></li>
                         <li><a href="#">Downloads</a></li>
                         <li><a href="#">Returns</a></li>
                         <li><a href="#">Transactions</a></li>
@@ -210,7 +210,7 @@
 				<div id="myaccount">
 					<h1>MY ACCOUNT</h1>
                     <ul>
-                        <li><a href="#">Edit your account information</a></li>
+                        <li><a href="orderinformation.php">Order Information</a></li>
                         <li><a href="#">Change your password</a></li>
                         <li><a href="#">Modify your address book entries</a></li>
                         <li><a href="#">Modify your wishlist</a></li>
@@ -220,7 +220,7 @@
 				<div id="myorder">
 					<h1>MY ORDER</h1>
 					<ul>
-                        <li><a href="#">Edit your account information</a></li>
+                        <li><a href="orderinformation.php">Order Information</a></li>
                         <li><a href="#">Change your password</a></li>
                         <li><a href="#">Modify your address book entries</a></li>
                         <li><a href="#">Modify your wishlist</a></li>

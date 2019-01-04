@@ -82,13 +82,13 @@
                 ?>
             </div>
 			<div id="main-menu">
-				<ul>
-                    
+				<ul>     
                     <?php 
                         if(isset($_SESSION['id'])) {
                         echo'<li><a href="home.php">Home</a></li>
                             <li><a href="myaccount.php">My Account</a></li>
-                            <li><a class="actual" href="mycart.php">My Cart</a></li>
+                            <li><a href="mycart.php">My Cart</a></li>
+                            <li><a class="actual" href="orderinformation.php">Order Info</a></li>
                             <li><a href="signin.php">Sign out, '.$_SESSION['lastname'].'</a></li>';
                         }
                         if(!isset($_SESSION['id'])) {
@@ -107,91 +107,10 @@
 	</header>
 
 	<section>
-		<nav>
-			<div class="container">
-                <!-- Desktop -->
-                <div class="dropdown">
-                    <button class="dropbtn" id="dropbtn1">Cell Phones &amp; Tablets</button>
-                    <div class="dropdown-content" id="dropdown-content1">
-                        <a href="#">Samsung</a>
-                        <a href="#">Apple</a>
-                        <a href="#">Nokia</a>
-                        <a href="#">Sony</a>
-                        <a href="#">LG</a>
-                        <a href="#">Huawei</a>
-                        <a href="#">Oneplus</a>
-                        <a href="#">Phone Accessories</a>
-                        <a href="#">Others</a>     
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="dropbtn" id="dropbtn2">Laptops &amp; Computers</button>
-                    <div class="dropdown-content" id="dropdown-content2">
-                        <a href="#">Apple</a>
-                        <a href="#">Asus</a>
-                        <a href="#">Lenovo</a>
-                        <a href="#">HP</a>
-                        <a href="#">Dell</a>
-                        <a href="#">Acer</a>
-                        <a href="#">Alienware</a>
-                        <a href="#">Laptop Accessories</a>
-                        <a href="#">PC Components</a>     
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="dropbtn" id="dropbtn3">Cameras &amp; Photos</button>
-                    <div class="dropdown-content" id="dropdown-content3">
-                        <a href="#">Canon</a>
-                        <a href="#">Panasonic</a>
-                        <a href="#">Sony</a>
-                        <a href="#">Lumix</a>
-                        <a href="#">Fujifilm</a>
-                        <a href="#">GoPro</a>
-                        <a href="#">Camera Accessories</a>     
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="dropbtn" id="dropbtn4">TV &amp; Audio</button>
-                    <div class="dropdown-content" id="dropdown-content4">
-                        <a href="#">Samsung</a>
-                        <a href="#">Philips</a>
-                        <a href="#">LG</a>
-                        <a href="#">Sharp</a>
-                        <a href="#">Speaker</a>
-                        <a href="#">Home Audio</a>
-                        <a href="#">DVD Player</a>
-                        <a href="#">Audio HI FI</a>     
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="dropbtn" id="dropbtn5">Video Games &amp; Consoles</button>
-                    <div class="dropdown-content" id="dropdown-content5">
-                        <a href="#">Games</a>
-                        <a href="#">Consoles</a>
-                        <a href="#">Gamepad</a>
-                        <a href="#">Joystick</a>
-                        <a href="#">Gaming Chairs</a>    
-                    </div>
-                </div>
-                
-                <!-- Tablet & Mobile -->
-                <div class="topnav" id="myTopnav">
-                    <a href="#" class="active">Categories</a>
-                    <a href="#">Cell Phones &amp; Tablets</a>
-                    <a href="#">Laptops &amp; Computers</a>
-                    <a href="#">Cameras &amp; Photos</a>
-                    <a href="#">TV &amp; Audio</a>
-                    <a href="#">Video Games &amp; Consoles</a>
-                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                </div>
-			</div>
-		</nav>
-
 		<div class="container">
 			<div id="shoppingcart">
-                <h1>Your shopping cart</h1>
+                <h1>Order Information</h1>
+                <p style = "text-align: center; font-size: 15px;">Your order has been requested. It will be processed in 5-6 working days.</p>
 
                 <?php 
                     // Prepare variabiles for db connection
@@ -213,12 +132,11 @@
 
                 <table>
                     <tr>
-                        <th>USER ID</th>
+                        <th>Shipping Address</th>
                         <th>Product Name</th>
                         <th>Price</th>
                         <th>Qty</th>
                         <th>Amount</th>
-                        <th>Options</th>
                     </tr>
                     <?php
                         $total = 0;
@@ -231,16 +149,14 @@
                                     <td>"."$".$row['price']."</td>
                                     <td>".$row['quantity']."</td>
                                     <td>"."$".$amount."</td>
-                                    <td><a href='includes/deletefromcart.inc.php?product_name=".$row['product_name']."'>Remove</a></td>
                                 </tr>";    
                         }
                         mysqli_close($conn);
 
-                        echo "<tr><td colspan='6'>"."Order Total: "."$".$total."</td></tr>";
+                        echo "<tr><td colspan='6'>"."Total: "."$".$total."</td></tr>";
 
                         echo "<tr id='ordertotal'>
-                                    <td colspan='6'><button><a href='includes/deletefromcart.inc.php?user_id=".$_SESSION['id']."'>Clear Cart</a></button>
-                                        <button><a href='orderinformation.php'>Place Order</a></button></td>
+                                    <td colspan='6'><button><a href='includes/deletefromcart.inc.php?user_id=".$_SESSION['id']."'>Cancel Order</a></button>
                                 </tr>";
        
                     ?>    

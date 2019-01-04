@@ -2,11 +2,12 @@
 
 require 'connection.php';
 
-if(!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {
+if(!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['username']) && !empty($_POST['address']) && !empty($_POST['email']) && !empty($_POST['password']) && isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['username']) && isset($_POST['address']) && isset($_POST['email']) && isset($_POST['password'])) {
 
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
 	$username = strtolower($_POST['username']);
+	$address = $_POST['address'];
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 
@@ -20,7 +21,7 @@ if(!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['u
 		header("Location: ../signup.php?info=exist");
 		die();
 	} else {
-		$sql = "INSERT INTO users (firstname, lastname, username, email, password) VALUES ('$firstname', '$lastname', '$username','$email', '$password_hashed')";
+		$sql = "INSERT INTO users (firstname, lastname, username, address, email, password) VALUES ('$firstname', '$lastname', '$username', '$address', '$email', '$password_hashed')";
 		$result = mysqli_query($connection, $sql);
 		header ("Location: ../signup.php?info=ok");
 	}
@@ -31,7 +32,7 @@ if(!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['u
   		header("Location: ../signup.php?info=invalid_email");
   		die(); 
 	} else {
-		$sql = "INSERT INTO users (firstname, lastname, username, email, password) VALUES ('$firstname', '$lastname', '$username','$email', '$password_hashed')";
+		$sql = "INSERT INTO users (firstname, lastname, username, address, email, password) VALUES ('$firstname', '$lastname', '$username', '$address', '$email', '$password_hashed')";
 		$result = mysqli_query($connection, $sql);
 		header ("Location: ../signup.php?info=ok");
 	}
