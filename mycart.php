@@ -208,7 +208,9 @@
                         die("Connection failed".$conn->connect_error);
                     }
                     
+                    if(isset($_SESSION['id'])) {
                     $query = mysqli_query($conn,'SELECT * FROM cart WHERE user_id='.$_SESSION['id']);
+                    }
                 ?>
 
                 <table>
@@ -221,27 +223,29 @@
                         <th>Options</th>
                     </tr>
                     <?php
-                        $total = 0;
-                        while($row = mysqli_fetch_array($query)) { 
-                            $amount = ($row['price'] * $row['quantity']);
-                            $total += $amount;
-                            echo "<tr>
-                                    <td>".$row['user_id']."</td>
-                                    <td>".$row['product_name']."</td>
-                                    <td>"."$".$row['price']."</td>
-                                    <td>".$row['quantity']."</td>
-                                    <td>"."$".$amount."</td>
-                                    <td><a href='includes/deletefromcart.inc.php?product_name=".$row['product_name']."'>Remove</a></td>
-                                </tr>";    
+                        if(isset($_SESSION['id'])) {
+                            $total = 0;
+                            while($row = mysqli_fetch_array($query)) { 
+                                $amount = ($row['price'] * $row['quantity']);
+                                $total += $amount;
+                                echo "<tr>
+                                        <td>".$row['user_id']."</td>
+                                        <td>".$row['product_name']."</td>
+                                        <td>"."$".$row['price']."</td>
+                                        <td>".$row['quantity']."</td>
+                                        <td>"."$".$amount."</td>
+                                        <td><a href='includes/deletefromcart.inc.php?product_name=".$row['product_name']."'>Remove</a></td>
+                                    </tr>";    
+                            }
+                            mysqli_close($conn);
+
+                            echo "<tr><td colspan='6'>"."Order Total: "."$".$total."</td></tr>";
+
+                            echo "<tr id='ordertotal'>
+                                        <td colspan='6'><button><a href='includes/deletefromcart.inc.php?user_id=".$_SESSION['id']."'>Clear Cart</a></button>
+                                            <button><a href='orderinformation.php'>Place Order</a></button></td>
+                                    </tr>";
                         }
-                        mysqli_close($conn);
-
-                        echo "<tr><td colspan='6'>"."Order Total: "."$".$total."</td></tr>";
-
-                        echo "<tr id='ordertotal'>
-                                    <td colspan='6'><button><a href='includes/deletefromcart.inc.php?user_id=".$_SESSION['id']."'>Clear Cart</a></button>
-                                        <button><a href='orderinformation.php'>Place Order</a></button></td>
-                                </tr>";
        
                     ?>    
                 </table>
